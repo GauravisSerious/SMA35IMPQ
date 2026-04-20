@@ -1,834 +1,913 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AAKAR — Technical Documentation</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 SMA — All 35 Most Important Questions & Answers</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --red: #ef4444;
+            --orange: #f97316;
+            --yellow: #eab308;
+            --green: #22c55e;
+            --cyan: #06b6d4;
+            --purple: #a855f7;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family:'Outfit',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+        .wrap { max-width:1050px; margin:0 auto; padding:2rem; }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+        header { text-align:center; padding:3rem 1rem 2rem; border-bottom:2px solid var(--orange); background:linear-gradient(180deg,#0f172a,#1e293b); }
+        header h1 { font-size:2.8rem; background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        header p { color:var(--muted); font-size:1.1rem; margin-top:.5rem; }
+        .counter { display:inline-block; margin-top:1rem; background:rgba(239,68,68,.15); border:1px solid var(--red); padding:.4rem 1rem; border-radius:6px; color:var(--red); font-weight:800; font-size:.95rem; }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: #0D0D1A;
-  color: #E4E4F0;
-  font-size: 15px;
-  line-height: 1.75;
-}
+        .unit-title { font-size:1.6rem; font-weight:800; margin:3rem 0 1.2rem; padding-bottom:8px; border-bottom:3px solid var(--orange); display:flex; align-items:center; gap:10px; }
+        .unit-title .emoji { font-size:1.8rem; }
 
-/* ─── Page wrapper ─── */
-.page {
-  max-width: 860px;
-  margin: 40px auto;
-  background: #13131F;
-  border-radius: 16px;
-  box-shadow: 0 4px 60px rgba(0,0,0,0.5);
-  overflow: hidden;
-}
+        .qa { background:var(--card); border:1px solid var(--border); border-radius:12px; margin-bottom:1rem; overflow:hidden; transition:border-color .3s,box-shadow .3s; }
+        .qa:hover { border-color:var(--purple); box-shadow:0 8px 24px rgba(0,0,0,.4); }
+        .q-head { padding:1.2rem 1.5rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-weight:600; font-size:1.05rem; color:#e2e8f0; user-select:none; }
+        .q-head .num { background:var(--orange); color:#000; width:32px; height:32px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:.85rem; font-weight:800; margin-right:12px; flex-shrink:0; }
+        .q-head .icon { font-style:normal; font-size:1.6rem; color:var(--orange); transition:transform .3s; flex-shrink:0; margin-left:12px; }
+        .qa.open .q-head .icon { transform:rotate(45deg); color:var(--green); }
+        .qa.open .q-head { color:var(--green); }
 
-/* ─── Cover ─── */
-.cover {
-  background: linear-gradient(135deg, #5B21B6 0%, #7C3AED 40%, #4F46E5 100%);
-  padding: 60px 56px 52px;
-  color: #fff;
-}
-.cover .app-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 30px; padding: 6px 16px;
-  font-size: 12px; font-weight: 600; letter-spacing: 1px;
-  text-transform: uppercase; margin-bottom: 28px;
-}
-.cover h1 { font-size: 48px; font-weight: 800; line-height: 1.15; margin-bottom: 10px; }
-.cover .tagline { font-size: 18px; opacity: 0.85; font-weight: 400; margin-bottom: 32px; }
-.cover-meta { display:flex; gap:32px; flex-wrap:wrap; }
-.cover-meta-item { font-size: 13px; opacity: 0.75; }
-.cover-meta-item strong { display:block; font-size:15px; opacity:1; font-weight:600; margin-bottom:2px; }
+        .a-body { max-height:0; overflow:hidden; transition:max-height .35s ease; background:rgba(0,0,0,.25); color:#cbd5e1; }
+        .a-body .inner { padding:1.2rem 1.5rem 1.5rem; }
+        .qa.open .a-body { border-top:1px solid var(--border); }
 
-/* ─── TOC ─── */
-.toc {
-  background: #0D0D1A;
-  border-bottom: 1px solid rgba(124,77,255,0.15);
-  padding: 32px 56px;
-}
-.toc h2 { font-size:14px; font-weight:700; color:#7C3AED; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px; }
-.toc-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px 32px; }
-.toc-item { display:flex; gap:10px; align-items:center; font-size:14px; color:#9090AD; padding:4px 0; }
-.toc-num { font-size:12px; font-weight:700; color:#7C3AED; min-width:18px; }
+        .a-body h4 { color:var(--text); margin:12px 0 6px; font-size:1rem; }
+        .a-body h4:first-child { margin-top:0; }
+        .a-body ul,.a-body ol { padding-left:1.4rem; margin:6px 0 12px; }
+        .a-body li { margin-bottom:6px; }
+        .hl { color:var(--cyan); font-weight:600; }
+        .hl2 { color:var(--yellow); font-weight:600; }
 
-/* ─── Body content ─── */
-.content { padding: 48px 56px; }
+        .badge { display:inline-block; padding:2px 8px; border-radius:20px; font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; vertical-align:middle; margin-left:8px; }
+        .badge.hot { background:linear-gradient(45deg,var(--red),var(--orange)); color:#fff; box-shadow:0 0 8px rgba(239,68,68,.5); }
+        .badge.marks { background:var(--purple); color:#fff; }
 
-/* ─── Section headings ─── */
-.section { margin-bottom: 52px; }
+        table { width:100%; border-collapse:collapse; margin:10px 0; border-radius:8px; overflow:hidden; }
+        th,td { padding:10px 14px; text-align:left; border-bottom:1px solid var(--border); font-size:.95rem; }
+        th { background:rgba(168,85,247,.2); font-weight:700; color:var(--text); }
+        tr:last-child td { border-bottom:none; }
 
-h2.section-title {
-  font-size: 22px;
-  font-weight: 800;
-  color: #FFFFFF;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid rgba(124,77,255,0.3);
-  display: flex; align-items: center; gap: 12px;
-}
-.section-num {
-  background: #7C3AED; color: #fff;
-  width: 32px; height: 32px; border-radius: 8px;
-  display: inline-flex; align-items: center; justify-content: center;
-  font-size: 14px; font-weight: 700; flex-shrink: 0;
-}
+        .diagram { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; background:rgba(0,0,0,.3); padding:18px; border-radius:8px; margin:10px 0; border:1px dashed var(--orange); }
+        .d-box { background:var(--orange); color:#000; padding:12px 18px; border-radius:8px; font-weight:800; text-align:center; font-size:.9rem; }
+        .d-arrow { color:var(--yellow); font-size:1.6rem; font-weight:bold; }
 
-h3 {
-  font-size: 17px; font-weight: 700; color: #A78BFA;
-  margin: 28px 0 10px;
-}
-h4 { font-size: 14px; font-weight: 700; color: #C4B5FD; margin: 18px 0 6px; }
-
-p { margin-bottom: 14px; color: #C9C9DC; }
-
-/* ─── Tables ─── */
-table { width:100%; border-collapse:collapse; margin:14px 0 22px; font-size:13.5px; }
-thead tr { background: #1E1B35; }
-thead th {
-  padding: 10px 14px; text-align: left;
-  font-size: 11.5px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.6px; color: #A78BFA;
-  border-bottom: 2px solid rgba(124,77,255,0.3);
-}
-tbody td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #C9C9DC; vertical-align: top; }
-tbody tr:hover { background: rgba(124,77,255,0.04); }
-
-/* ─── Code ─── */
-code {
-  font-family: 'JetBrains Mono', monospace;
-  background: #1E1B35; color: #C4B5FD;
-  padding: 2px 7px; border-radius: 5px; font-size: 13px;
-}
-pre {
-  font-family: 'JetBrains Mono', monospace;
-  background: #1E1E2E; color: #A3E4D7;
-  border-radius: 12px; padding: 20px 22px;
-  font-size: 12.5px; line-height: 1.9;
-  margin: 14px 0 22px; overflow-x: auto;
-}
-
-/* ─── Callouts ─── */
-.callout {
-  border-radius: 10px; padding: 14px 18px;
-  margin: 16px 0; font-size: 14px;
-  display: flex; gap: 12px; align-items: flex-start;
-}
-.callout.purple { background:rgba(124,77,255,0.08); border-left:4px solid #7C3AED; }
-.callout.green  { background:rgba(16,185,129,0.08); border-left:4px solid #10B981; }
-.callout.blue   { background:rgba(59,130,246,0.08); border-left:4px solid #3B82F6; }
-.callout.orange { background:rgba(245,158,11,0.08); border-left:4px solid #F59E0B; }
-.callout-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
-.callout-text { color:#C9C9DC; }
-.callout-text strong { color:#FFFFFF; }
-
-/* ─── Feature Cards ─── */
-.card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin:14px 0 22px; }
-.card {
-  border:1.5px solid rgba(124,77,255,0.2); border-radius:12px; padding:18px;
-  background:#1A1A2E; transition: box-shadow .2s;
-}
-.card:hover { box-shadow:0 4px 20px rgba(124,77,255,0.15); }
-.card-emoji { font-size:26px; margin-bottom:8px; }
-.card h4 { color:#FFFFFF; margin:0 0 5px; font-size:14px; }
-.card p { font-size:13px; color:#9090AD; margin:0; line-height:1.5; }
-
-/* ─── Flow steps ─── */
-.flow-steps { display:flex; flex-direction:column; gap:0; margin:14px 0 22px; }
-.flow-step { display:flex; gap:16px; position:relative; }
-.flow-step:not(:last-child)::after {
-  content:''; position:absolute;
-  left:15px; top:36px; bottom:0; width:2px;
-  background:#EDE9FE;
-}
-.step-circle {
-  width:30px; height:30px; border-radius:50%;
-  background:#7C3AED; color:#fff;
-  display:flex; align-items:center; justify-content:center;
-  font-size:13px; font-weight:700; flex-shrink:0; z-index:1;
-}
-.step-body { padding:4px 0 22px; flex:1; }
-.step-body strong { color:#FFFFFF; }
-.step-body p { margin:4px 0 0; font-size:14px; color:#9090AD; }
-
-/* ─── Diagram boxes ─── */
-.diagram {
-  background:#0D0D1A; border:1.5px solid rgba(124,77,255,0.2); border-radius:12px;
-  padding:24px; margin:14px 0 22px; overflow-x:auto;
-  font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.8;
-  color:#A3E4D7; white-space:pre;
-}
-
-/* ─── Badge pills ─── */
-.pill-row { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 16px; }
-.pill {
-  display:inline-block; padding:4px 13px; border-radius:20px;
-  font-size:12px; font-weight:600;
-}
-.pill-purple { background:#EDE9FE; color:#5B21B6; }
-.pill-green  { background:#D1FAE5; color:#065F46; }
-.pill-blue   { background:#DBEAFE; color:#1D4ED8; }
-.pill-orange { background:#FEF3C7; color:#92400E; }
-.pill-red    { background:#FEE2E2; color:#991B1B; }
-
-/* ─── UL / OL ─── */
-ul, ol { padding-left:22px; margin:8px 0 16px; }
-li { margin-bottom:6px; color:#C9C9DC; font-size:14.5px; }
-li strong { color:#FFFFFF; }
-
-/* ─── HR ─── */
-hr { border:none; border-top:1.5px solid rgba(255,255,255,0.06); margin:40px 0; }
-
-/* ─── Footer ─── */
-.doc-footer {
-  background:#0D0D1A; border-top:1.5px solid rgba(255,255,255,0.06);
-  padding:28px 56px; text-align:center;
-  font-size:13px; color:#6B6B8A;
-}
-.doc-footer strong { color:#C9C9DC; }
-
-/* ─── Print ─── */
-@media print {
-  body { background:#fff; font-size:11pt; }
-  .page { box-shadow:none; margin:0; border-radius:0; }
-  .cover { padding:40px; }
-  .content { padding:32px 40px; }
-  .toc { padding:24px 40px; }
-  .card:hover { box-shadow:none; }
-  .section { page-break-inside:avoid; }
-  pre { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-}
-</style>
+        @media(max-width:600px){ header h1{font-size:1.8rem;} .wrap{padding:1rem;} .q-head{font-size:.95rem;padding:1rem;} }
+    </style>
 </head>
 <body>
-<div class="page">
 
-<!-- ════════════════ COVER ════════════════ -->
-<div class="cover">
-  <div class="app-badge">📱 Final Year Project — 2026</div>
-  <h1>AAKAR</h1>
-  <p class="tagline">Autism Assistive Kit for Awareness & Recognition<br>
-  AI-Powered Emotion Detection &amp; Therapeutic Learning Platform</p>
-  <div class="cover-meta">
-    <div class="cover-meta-item"><strong>Version</strong>1.0.0</div>
-    <div class="cover-meta-item"><strong>Platform</strong>Android · iOS · Web · Desktop</div>
-    <div class="cover-meta-item"><strong>Stack</strong>Flutter + Python FastAPI</div>
-    <div class="cover-meta-item"><strong>Date</strong>April 2026</div>
-  </div>
+<header>
+    <h1>🔥 MOST IMPORTANT Q &amp; A</h1>
+    <p>Social Media Analytics (CSDO8023) — External Viva Ready</p>
+    <div class="counter">📝 35 HIGH-PROBABILITY QUESTIONS + FULL ANSWERS</div>
+</header>
+
+<div class="wrap">
+
+<!-- ===================== UNIT 1 ===================== -->
+<div class="unit-title"><span class="emoji">✅</span> Unit 1: Social Media Analytics Basics</div>
+
+<!-- Q1 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">1</span>Define Social Media Analytics &amp; explain its need.<span class="badge marks">10 M</span><span class="badge hot">HOT</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p><span class="hl">Social Media Analytics (SMA)</span> is the process of collecting data from social media platforms (Facebook, Twitter/X, YouTube, blogs, forums), analyzing it using statistical and computational techniques, and converting it into actionable business insights.</p>
+        <h4>Need / Importance:</h4>
+        <ul>
+            <li><span class="hl2">Brand Monitoring:</span> Track what customers are saying about your brand in real-time and catch PR crises early.</li>
+            <li><span class="hl2">Customer Insights:</span> Understand customer preferences, pain points, and sentiments directly from their own words.</li>
+            <li><span class="hl2">Competitive Intelligence:</span> Monitor competitor activities, campaigns, and audience reactions.</li>
+            <li><span class="hl2">Marketing ROI:</span> Measure the effectiveness of social media campaigns and optimize ad spend.</li>
+            <li><span class="hl2">Product Improvement:</span> Use customer feedback/reviews to improve existing products or develop new ones.</li>
+            <li><span class="hl2">Trend Identification:</span> Spot emerging trends, viral content, and shifting consumer behavior patterns.</li>
+        </ul>
+    </div></div>
 </div>
 
-<!-- ════════════════ TOC ════════════════ -->
-<div class="toc">
-  <h2>Table of Contents</h2>
-  <div class="toc-grid">
-    <div class="toc-item"><span class="toc-num">01</span> Project Overview</div>
-    <div class="toc-item"><span class="toc-num">05</span> Architecture Diagrams</div>
-    <div class="toc-item"><span class="toc-num">02</span> System Architecture</div>
-    <div class="toc-item"><span class="toc-num">06</span> Technical Glossary</div>
-    <div class="toc-item"><span class="toc-num">03</span> File System Structure</div>
-    <div class="toc-item"><span class="toc-num">07</span> Technologies Used</div>
-    <div class="toc-item"><span class="toc-num">04</span> Workflow &amp; Data Flow</div>
-    <div class="toc-item"><span class="toc-num">08</span> Design &amp; Best Practices</div>
-  </div>
+<!-- Q2 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">2</span>Explain Social Media Analytics Cycle (with diagram).<span class="badge marks">10 M</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p>The SMA Cycle is a continuous, iterative process comprising three key stages:</p>
+        <div class="diagram">
+            <div class="d-box">1. CAPTURE<br><small>Data Collection</small></div>
+            <div class="d-arrow">➜</div>
+            <div class="d-box">2. UNDERSTAND<br><small>Analysis &amp; Mining</small></div>
+            <div class="d-arrow">➜</div>
+            <div class="d-box">3. PRESENT<br><small>Visualization &amp; Reporting</small></div>
+            <div class="d-arrow">🔄</div>
+        </div>
+        <ul>
+            <li><span class="hl">Capture:</span> Collect data from social platforms using APIs (Twitter API, Facebook Graph API), web scraping (BeautifulSoup, Scrapy), or third-party tools (Netlytic). Data may be in JSON, XML, or HTML format.</li>
+            <li><span class="hl">Understand:</span> Clean the data (remove noise, stop words), then apply analytics techniques — Sentiment Analysis, Topic Modeling (LDA), Network Analysis (centrality, community detection), and statistical methods to extract meaningful patterns.</li>
+            <li><span class="hl">Present:</span> Visualize findings using dashboards (Dash, Tableau, Power BI), charts, word clouds, and network graphs. Generate actionable reports for stakeholders with clear KPIs and recommendations.</li>
+        </ul>
+        <p>The cycle repeats as new data comes in and strategies are refined based on results.</p>
+    </div></div>
 </div>
 
-<!-- ════════════════ CONTENT ════════════════ -->
-<div class="content">
-
-<!-- ── 1. Overview ── -->
-<div class="section" id="s1">
-  <h2 class="section-title"><span class="section-num">1</span> Project Overview</h2>
-
-  <h3>What is Aakar?</h3>
-  <p><strong>Aakar</strong> (आकार — meaning "shape" in Hindi) is a cross-platform mobile and desktop application designed to help <strong>children on the Autism Spectrum</strong> learn to recognize, understand, and express emotions. It serves as a comprehensive <em>Autism Assistive Kit for Awareness and Recognition</em>.</p>
-
-  <div class="callout purple">
-    <span class="callout-icon">🎯</span>
-    <div class="callout-text"><strong>Core Mission:</strong> Make emotion education interactive, gamified, and measurable for children with ASD — while giving teachers, therapists, and parents the tools to track progress collaboratively.</div>
-  </div>
-
-  <h3>Problem Statement</h3>
-  <p>Children with ASD often face three core challenges:</p>
-  <ul>
-    <li><strong>Recognizing</strong> facial emotions in others</li>
-    <li><strong>Expressing</strong> their own emotions appropriately</li>
-    <li><strong>Engaging</strong> with traditional, non-interactive learning methods</li>
-  </ul>
-  <p>Aakar addresses these by combining AI-powered emotion detection, real-time live feedback, and therapeutic game-based learning — all in one platform.</p>
-
-  <h3>Key Features</h3>
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-emoji">🎭</div>
-      <h4>AI Emotion Detection</h4>
-      <p>3 modes: On-device TFLite, Cloud DeepFace, and real-time Live WebView detection</p>
+<!-- Q3 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">3</span>Social Media Analytics vs Traditional Business Analytics.<span class="badge marks">Table</span><span class="badge hot">HOT</span></div>
+        <i class="icon">+</i>
     </div>
-    <div class="card">
-      <div class="card-emoji">🎮</div>
-      <h4>15+ Therapeutic Games</h4>
-      <p>Memory, jigsaw, maze, letter tracing, emotion matching, social scenario games</p>
-    </div>
-    <div class="card">
-      <div class="card-emoji">📊</div>
-      <h4>4 Role Dashboards</h4>
-      <p>Dedicated dashboards for Child, Teacher, Therapist, and Parent</p>
-    </div>
-    <div class="card">
-      <div class="card-emoji">📡</div>
-      <h4>Live Detection</h4>
-      <p>Real-time emotion overlay on camera using face-api.js inside a WebView</p>
-    </div>
-    <div class="card">
-      <div class="card-emoji">🌍</div>
-      <h4>Bilingual Support</h4>
-      <p>Full English and Hindi UI with 200+ translated strings</p>
-    </div>
-    <div class="card">
-      <div class="card-emoji">🔒</div>
-      <h4>Privacy-First</h4>
-      <p>All data stored locally on device (SQLite). Works fully offline.</p>
-    </div>
-    <div class="card">
-      <div class="card-emoji">🤖</div>
-      <h4>AI Chatbot</h4>
-      <p>Emotional support chatbot companion for children</p>
-    </div>
-    <div class="card">
-      <div class="card-emoji">📋</div>
-      <h4>PDF Reports</h4>
-      <p>Auto-generated progress reports for teachers and therapists</p>
-    </div>
-  </div>
-
-  <h3>User Roles</h3>
-  <table>
-    <thead><tr><th>Role</th><th>Primary Capabilities</th></tr></thead>
-    <tbody>
-      <tr><td>👧 <strong>Child</strong></td><td>Emotion detection, 15+ games, mood journal, social stories, zen zone, chatbot, drawing canvas</td></tr>
-      <tr><td>👩‍🏫 <strong>Teacher</strong></td><td>Student profiles, emotion progress tracking, session monitoring, behavior logs, parent messaging, PDF reports</td></tr>
-      <tr><td>🧑‍⚕️ <strong>Therapist</strong></td><td>Client management, emotion analytics, therapy goals, session history, parent communication, PDF reports</td></tr>
-      <tr><td>👨‍👩‍👧 <strong>Parent</strong></td><td>Child progress dashboard, therapist messages, educational videos, therapy center finder</td></tr>
-      <tr><td>🔧 <strong>Admin</strong></td><td>System-wide management panel</td></tr>
-    </tbody>
-  </table>
+    <div class="a-body"><div class="inner">
+        <table>
+            <tr><th>Aspect</th><th>Traditional Business Analytics</th><th>Social Media Analytics</th></tr>
+            <tr><td><b>Data Type</b></td><td>Structured (tables, rows, columns)</td><td>Unstructured / Semi-structured (text, images, video, JSON)</td></tr>
+            <tr><td><b>Data Source</b></td><td>Internal (CRM, ERP, POS, databases)</td><td>External (Twitter, FB, YouTube, Reddit, blogs)</td></tr>
+            <tr><td><b>Volume</b></td><td>Manageable, predictable</td><td>Massive, continuous real-time streams</td></tr>
+            <tr><td><b>Velocity</b></td><td>Batch processing (daily/weekly)</td><td>Real-time / Near real-time</td></tr>
+            <tr><td><b>Storage</b></td><td>SQL databases (MySQL, Oracle)</td><td>NoSQL databases (MongoDB, Cassandra)</td></tr>
+            <tr><td><b>Tools</b></td><td>Excel, SAS, SPSS</td><td>NLTK, NetworkX, VADER, Gephi, Google Analytics</td></tr>
+            <tr><td><b>Metrics</b></td><td>Revenue, profit, inventory</td><td>Engagement rate, sentiment, reach, virality, influence</td></tr>
+            <tr><td><b>Analysis</b></td><td>Statistical, financial modeling</td><td>NLP, graph theory, machine learning</td></tr>
+        </table>
+    </div></div>
 </div>
 
-<hr>
-
-<!-- ── 2. Architecture ── -->
-<div class="section" id="s2">
-  <h2 class="section-title"><span class="section-num">2</span> System Architecture</h2>
-
-  <p>Aakar follows a <strong>hybrid three-tier architecture</strong> combining fully offline on-device ML with an optional cloud backend for higher-accuracy analysis.</p>
-
-  <h3>Architecture Overview</h3>
-  <div class="diagram">┌───────────────────────────────────────────────────────────────────┐
-│                        FLUTTER CLIENT APP                         │
-│                                                                   │
-│  ┌─────────────┐    ┌──────────────┐    ┌────────────────────┐   │
-│  │  UI Layer   │───▶│  Providers   │───▶│   Service Layer    │   │
-│  │ (50+ pages) │    │ (8 managers) │    │  (7 services)      │   │
-│  └─────────────┘    └──────────────┘    └────────┬───────────┘   │
-│                                                  │               │
-│              ┌───────────────────────────────────┤               │
-│              ▼                ▼                  ▼               │
-│       ┌────────────┐  ┌──────────────┐  ┌──────────────┐        │
-│       │  TFLite    │  │  WebView +   │  │  DeepFace    │        │
-│       │ (On-Device)│  │  face-api.js │  │  HTTP Client │        │
-│       └────────────┘  └──────────────┘  └──────┬───────┘        │
-│                                                 │               │
-│       ┌──────────────────────┐         HTTP POST│               │
-│       │ SQLite   │   Hive    │                  │               │
-│       │(8 tables)│ (Cache)   │                  ▼               │
-│       └──────────────────────┘    ┌─────────────────────────┐   │
-│                                   │   PYTHON BACKEND        │   │
-│                                   │   FastAPI (:8000)       │   │
-│                                   │   ├─ POST /analyze      │   │
-└───────────────────────────────────│   ├─ GET  /health       │───┘
-                                    │   └─ GET  /history      │
-                                    │                         │
-                                    │  OpenCV Haar ─▶ DeepFace│
-                                    │  (Face Crop)   (FER2013)│
-                                    └─────────────────────────┘</div>
-
-  <h3>Three Emotion Detection Modes</h3>
-  <table>
-    <thead><tr><th>Mode</th><th>Technology</th><th>Accuracy</th><th>Internet</th><th>Best For</th></tr></thead>
-    <tbody>
-      <tr><td>🔌 <strong>On-Device</strong></td><td>TFLite + FER2013 model</td><td>~65%</td><td>❌ Not needed</td><td>Quick offline scan</td></tr>
-      <tr><td>☁️ <strong>Cloud</strong></td><td>DeepFace + MTCNN</td><td>~85%</td><td>✅ Required</td><td>High accuracy analysis</td></tr>
-      <tr><td>📡 <strong>Live</strong></td><td>face-api.js + WebView</td><td>~70%</td><td>❌ Not needed</td><td>Real-time camera feed</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Application Layers</h3>
-  <table>
-    <thead><tr><th>Layer</th><th>Purpose</th><th>Key Files</th></tr></thead>
-    <tbody>
-      <tr><td><strong>UI Layer</strong></td><td>All screens, navigation, animations</td><td><code>lib/pages/</code>, <code>lib/widgets/</code></td></tr>
-      <tr><td><strong>State Layer</strong></td><td>Reactive data (8 Providers)</td><td><code>lib/providers/</code></td></tr>
-      <tr><td><strong>Service Layer</strong></td><td>API calls, ML inference, TTS</td><td><code>lib/services/</code> (7 files)</td></tr>
-      <tr><td><strong>Data Layer</strong></td><td>Database, caching, settings</td><td><code>lib/database/</code>, Hive, SharedPrefs</td></tr>
-      <tr><td><strong>Backend</strong></td><td>Cloud emotion detection (optional)</td><td><code>backend/main.py</code></td></tr>
-    </tbody>
-  </table>
+<!-- Q4 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">4</span>Challenges of Social Media Analytics.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <ul>
+            <li><span class="hl">Data Volume &amp; Velocity:</span> Millions of posts generated every minute; requires robust infrastructure to process in real-time.</li>
+            <li><span class="hl">Unstructured Data:</span> Social media text contains slang, abbreviations, emojis, sarcasm, and multiple languages — making NLP extremely challenging.</li>
+            <li><span class="hl">Spam &amp; Bot Detection:</span> Fake accounts and bots skew analytics. Identifying and filtering them is crucial for accurate insights.</li>
+            <li><span class="hl">Privacy &amp; Legal Issues:</span> GDPR, platform Terms of Service, and ethical concerns around scraping personal user data.</li>
+            <li><span class="hl">Platform API Limitations:</span> Rate limits, restricted access (Twitter/X now charges for API), and changing API structures.</li>
+            <li><span class="hl">Data Quality &amp; Noise:</span> Irrelevant posts, duplicate content, and incomplete data degrade analysis quality.</li>
+            <li><span class="hl">Measuring ROI:</span> Difficult to directly link social media activity to actual revenue or conversions.</li>
+        </ul>
+    </div></div>
 </div>
 
-<hr>
-
-<!-- ── 3. File Structure ── -->
-<div class="section" id="s3">
-  <h2 class="section-title"><span class="section-num">3</span> File System Structure</h2>
-
-  <h3>Root Directory</h3>
-  <pre>aakar_02-main/
-├── lib/                    ← Flutter source code (ALL app logic)
-├── backend/                ← Python FastAPI backend
-├── assets/                 ← AI model files + HTML for live detection
-├── android/ ios/           ← Platform-specific build files
-├── windows/ web/ linux/    ← Desktop & web targets
-├── pubspec.yaml            ← Dependencies & asset declarations
-└── dev_run.ps1             ← Quick launch script</pre>
-
-  <h3>lib/ — Core Application</h3>
-  <pre>lib/
-├── main.dart               ← App entry point, route table, provider setup
-├── app_config.dart         ← API URLs, image size limits, timeouts
-├── theme.dart              ← Complete design system (colors, fonts, radius)
-│
-├── models/         (14 files)   ← Plain Dart data classes
-│   ├── user_model.dart          ← User: id, name, email, role
-│   ├── emotion_result.dart      ← Single emission scan result
-│   ├── game_score.dart          ← Game progress + stars
-│   ├── mood_entry.dart          ← Mood journal entry
-│   └── ... 10 more
-│
-├── providers/      (8 files)    ← State management
-│   ├── auth_provider.dart       ← Login/signup, session
-│   ├── settings_provider.dart   ← Theme, TTS, API URL
-│   ├── language_provider.dart   ← EN ↔ HI switching
-│   ├── emotion_history_provider ← Emotion scan history
-│   ├── game_provider.dart       ← Scores, badges
-│   └── ... 3 more
-│
-├── services/       (7 files)    ← Business logic
-│   ├── ml_service.dart          ← TFLite on-device inference
-│   ├── deepface_service.dart    ← REST API client for backend
-│   ├── face_detector_service.dart  ← Face cropping (OpenCV)
-│   ├── auth_service.dart        ← bcrypt login/signup logic
-│   └── ... 3 more
-│
-├── database/
-│   └── database_helper.dart     ← SQLite — 8 tables, 766 lines
-│
-├── localization/   (4 files)    ← Translation system
-│   ├── english.dart             ← 200+ English strings
-│   └── hindi.dart               ← 200+ Hindi translations
-│
-├── widgets/        (9 files)    ← Reusable UI components
-│   ├── aakar_widgets.dart       ← PulseButton, GlassCard, EmotionTheme
-│   ├── kid_widgets.dart         ← Child-friendly animated components
-│   ├── emotion_buddy.dart       ← Animated mascot
-│   └── ... 6 more
-│
-└── pages/         (50+ screens)
-    ├── dashboards/
-    │   ├── child_dashboard.dart
-    │   ├── teacher_dashboard.dart
-    │   ├── therapist_dashboard.dart
-    │   └── parent_dashboard.dart
-    ├── teacher/        (10 sub-pages)
-    │   ├── student_profiles_page.dart
-    │   ├── emotion_progress_page.dart
-    │   ├── classroom_session_page.dart
-    │   ├── behavior_trigger_page.dart
-    │   ├── session_notes_page.dart
-    │   ├── parent_communication_page.dart
-    │   ├── therapy_coordination_page.dart
-    │   ├── ai_recommendations_page.dart
-    │   ├── activity_library_page.dart
-    │   └── report_generator_page.dart
-    ├── therapist/      (8 sub-pages)
-    │   ├── child_profile_page.dart
-    │   ├── emotion_analytics_page.dart
-    │   ├── session_history_page.dart
-    │   ├── therapy_goals_page.dart
-    │   ├── parent_messages_page.dart
-    │   ├── ai_recommendations_page.dart
-    │   ├── replay_library_page.dart
-    │   └── pdf_report_page.dart
-    ├── parent/         (5 sub-pages)
-    ├── games/          (5 emotion games + 14 basic games)
-    ├── detect_page.dart         ← Photo-based emotion detection
-    ├── mobile_emotion_screen.dart  ← Live WebView detection
-    └── ... 15 more screens</pre>
-
-  <h3>backend/ — Python Server</h3>
-  <pre>backend/
-├── main.py               ← FastAPI server (POST /analyze-emotion)
-├── requirements.txt      ← fastapi, deepface, opencv-python, numpy
-├── deploy.md             ← AWS EC2 deployment guide
-└── venv/                 ← Python virtual environment</pre>
-
-  <h3>assets/ — Bundled AI Models</h3>
-  <pre>assets/
-├── emotion_detection.html                      ← WebView HTML for live mode
-└── models/face-api/
-    ├── face-api.min.js                         ← face-api.js library (664 KB)
-    ├── tiny_face_detector_model-shard1         ← Face detection weights (193 KB)
-    ├── tiny_face_detector_model-weights_manifest.json
-    ├── face_expression_model-shard1            ← Expression weights (329 KB)
-    └── face_expression_model-weights_manifest.json</pre>
+<!-- Q5 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">5</span>Types of Social Media Analytics.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <ul>
+            <li><span class="hl">Descriptive Analytics:</span> "What happened?" — Summarizes past social media activity. Example: Your Instagram post received 5,000 likes last week.</li>
+            <li><span class="hl">Diagnostic Analytics:</span> "Why did it happen?" — Identifies causes behind outcomes. Example: The post went viral because a celebrity reshared it.</li>
+            <li><span class="hl">Predictive Analytics:</span> "What will happen?" — Uses historical patterns to forecast future trends. Example: Based on past campaigns, launching on Friday evening will yield 30% more engagement.</li>
+            <li><span class="hl">Prescriptive Analytics:</span> "What should we do?" — Recommends specific actions. Example: Increase ad spend on Instagram Reels by 25% and reduce Facebook banner ads.</li>
+        </ul>
+        <h4>Also classified by layer:</h4>
+        <p>Text Analytics, Network Analytics, Action Analytics, Hyperlink Analytics, Location Analytics, Search Engine Analytics, Mobile Analytics — these are the <span class="hl2">Seven Layers of SMA</span>.</p>
+    </div></div>
 </div>
 
-<hr>
+<!-- ===================== UNIT 2 ===================== -->
+<div class="unit-title"><span class="emoji">✅</span> Unit 2: Social Network Analysis</div>
 
-<!-- ── 4. Workflow ── -->
-<div class="section" id="s4">
-  <h2 class="section-title"><span class="section-num">4</span> Workflow &amp; Data Flow</h2>
-
-  <h3>4.1 — User Login &amp; Registration</h3>
-  <div class="flow-steps">
-    <div class="flow-step">
-      <div class="step-circle">1</div>
-      <div class="step-body"><strong>App Launch</strong><p>Splash screen animates for 2s → checks stored session</p></div>
+<!-- Q6 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">6</span>Explain Nodes, Edges, Degree, Centralization, Density.<span class="badge marks">10 M</span><span class="badge hot">HOT</span></div>
+        <i class="icon">+</i>
     </div>
-    <div class="flow-step">
-      <div class="step-circle">2</div>
-      <div class="step-body"><strong>Role Selection</strong><p>User picks their role: Child / Teacher / Therapist / Parent</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">3</div>
-      <div class="step-body"><strong>Sign Up</strong><p>Enter name, email, password → password passed through <strong>bcrypt</strong> hash → stored in SQLite <code>users</code> table</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">4</div>
-      <div class="step-body"><strong>Login</strong><p>Entered password hashed → compared against stored bcrypt hash → session created in AuthProvider</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">5</div>
-      <div class="step-body"><strong>Dashboard</strong><p>Role-based router navigates to the correct dashboard shell</p></div>
-    </div>
-  </div>
-
-  <h3>4.2 — Emotion Detection (Cloud Mode)</h3>
-  <div class="flow-steps">
-    <div class="flow-step">
-      <div class="step-circle">1</div>
-      <div class="step-body"><strong>Image Input</strong><p>User takes photo via camera or picks from gallery</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">2</div>
-      <div class="step-body"><strong>Compression</strong><p>Image resized to 512×512 and JPEG-compressed to ≤500 KB</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">3</div>
-      <div class="step-body"><strong>API Call</strong><p><code>POST /analyze-emotion</code> — multipart image sent to FastAPI server</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">4</div>
-      <div class="step-body"><strong>Face Crop</strong><p>OpenCV Haar Cascade detects face → crops to 224×224 px</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">5</div>
-      <div class="step-body"><strong>DeepFace Analysis</strong><p>DeepFace.analyze() with MTCNN detector → returns 7 emotion probabilities</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">6</div>
-      <div class="step-body"><strong>Post-Processing</strong><p>Neutral penalty (×0.3) + Fear/Surprise correction + linear normalization applied</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">7</div>
-      <div class="step-body"><strong>Save &amp; Display</strong><p>Result saved to SQLite <code>emotion_logs</code> table and EmotionHistoryProvider → UI shows emoji, confidence bars, "tends between" card</p></div>
-    </div>
-  </div>
-
-  <h3>4.3 — Live Detection (WebView Mode)</h3>
-  <div class="flow-steps">
-    <div class="flow-step">
-      <div class="step-circle">1</div>
-      <div class="step-body"><strong>WebView Opens</strong><p>Flutter loads <code>emotion_detection.html</code> in an embedded WebView</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">2</div>
-      <div class="step-body"><strong>Library Injection</strong><p>Flutter reads <code>face-api.min.js</code> from assets → encodes as base64 → executes in WebView as blob URL script</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">3</div>
-      <div class="step-body"><strong>Model Injection</strong><p>Flutter reads model weight files from assets → encodes as base64 → injects into <code>window.__modelData</code></p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">4</div>
-      <div class="step-body"><strong>Fetch Polyfill</strong><p>Custom <code>window.fetch</code> override intercepts model file requests → serves from <code>__modelData</code> instead of network</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">5</div>
-      <div class="step-body"><strong>Detection Loop</strong><p>Camera starts → every 400ms: TinyFaceDetector finds face → FaceExpressionNet classifies expression → draws bounding box + emotion bars</p></div>
-    </div>
-    <div class="flow-step">
-      <div class="step-circle">6</div>
-      <div class="step-body"><strong>JS → Flutter Bridge</strong><p><code>EmotionChannel.postMessage(JSON)</code> sends each result back to Flutter which saves it to EmotionHistoryProvider</p></div>
-    </div>
-  </div>
-
-  <h3>4.4 — Teacher–Student Data Flow</h3>
-  <table>
-    <thead><tr><th>Step</th><th>Action</th><th>Database Operation</th></tr></thead>
-    <tbody>
-      <tr><td>1</td><td>Teacher opens Student Profiles tab</td><td><code>getStudentsByTeacher(teacherId)</code> — JOIN users + mapping table</td></tr>
-      <tr><td>2</td><td>Teacher assigns a student</td><td>INSERT into <code>teacher_student_map</code></td></tr>
-      <tr><td>3</td><td>Child uses emotion detection</td><td>INSERT into <code>emotion_logs</code> (automatic)</td></tr>
-      <tr><td>4</td><td>Teacher views Emotion Progress</td><td><code>getEmotionLogsByUser(studentId)</code></td></tr>
-      <tr><td>5</td><td>Teacher generates PDF report</td><td>Reads logs + scores → builds PDF via <code>pdf</code> package</td></tr>
-    </tbody>
-  </table>
+    <div class="a-body"><div class="inner">
+        <p>Social Network Analysis (SNA) models social media as a mathematical <span class="hl">graph G = (V, E)</span> where V = set of vertices/nodes and E = set of edges/links.</p>
+        <ul>
+            <li><span class="hl2">Nodes (Vertices):</span> Individual entities in the network — users, pages, groups, hashtags. Each node represents an actor.</li>
+            <li><span class="hl2">Edges (Links/Ties):</span> Connections between nodes — friendships, follows, retweets, comments. Can be directed (A follows B) or undirected (A and B are mutual friends).</li>
+            <li><span class="hl2">Degree:</span> The number of direct connections a node has. <b>In-degree</b> = incoming connections (followers). <b>Out-degree</b> = outgoing connections (following). High degree = popular/influential.</li>
+            <li><span class="hl2">Centralization:</span> Measures how much the network revolves around a single dominant node. A highly centralized network has one powerful hub (e.g., a celebrity account). A decentralized network distributes influence evenly.</li>
+            <li><span class="hl2">Density:</span> Ratio of actual connections to maximum possible connections. Formula: <b>D = 2E / N(N-1)</b> for undirected graphs. High density = tight-knit community where almost everyone knows everyone.</li>
+        </ul>
+    </div></div>
 </div>
 
-<hr>
-
-<!-- ── 5. Diagrams ── -->
-<div class="section" id="s5">
-  <h2 class="section-title"><span class="section-num">5</span> Architecture Diagrams</h2>
-
-  <h3>Database Schema — 8 Tables</h3>
-  <div class="diagram">USERS                     EMOTION_LOGS              GAME_SCORES
-─────────────────         ──────────────────        ──────────────────
-id          (PK)  ──┐     id          (PK)          id          (PK)
-name               │     user_id     (FK) ◀──┐     user_id     (FK) ◀──┐
-email       (UK)   │     emotion               │     game_id              │
-password_hash      │     confidence            │     score                │
-role               │     detection_type        │     stars                │
-created_at         │     timestamp             │     timestamp            │
-                   │                          │                          │
-                   └──────────────────────────┴──────────────────────────┘
-                   │
-     ┌─────────────┼───────────────────────────────────────────────────┐
-     ▼             ▼                  ▼                    ▼           ▼
-TEACHER_STUDENT  BEHAVIOR_TRIGGERS  SESSION_NOTES  THERAPIST_MSG  THERAPY_GOALS
-teacher_id (FK)  teacher_id (FK)    teacher_id FK  therapist_id   therapist_id
-student_id (FK)  student_id (FK)    title          parent_id      child_id
-assigned_at      trigger_type       content        message        goal_title
-                 severity           timestamp      timestamp      status</div>
-
-  <h3>Navigation Flow</h3>
-  <div class="diagram">SplashScreen ──▶ Role Selection ──▶ Login / Signup
-                                              │
-                          ┌───────────────────┼─────────────────────┐
-                          ▼                   ▼                     ▼
-                    Child Dashboard    Teacher Dashboard    Therapist Dashboard
-                          │                   │                     │
-              ┌───────────┤         ┌─────────┤              ┌──────┤
-              ▼     ▼     ▼         ▼         ▼              ▼      ▼
-           Games  Detect  Mood   Students  Progress      Clients  Goals
-          (15+)   Live   Journal  Profiles  Emotion       Profiles Analytics
-                  Mode           Logs      Progress              Sessions</div>
-
-  <h3>State Management — Provider Layer</h3>
-  <div class="diagram">UI Widgets (pages)
-     │
-     ├── context.watch&lt;AuthProvider&gt;()      ──▶ SQLite (users)
-     ├── context.watch&lt;SettingsProvider&gt;()  ──▶ SharedPreferences
-     ├── context.watch&lt;LanguageProvider&gt;()  ──▶ SharedPreferences
-     ├── context.watch&lt;EmotionHistoryProvider&gt;() ──▶ SQLite (emotion_logs)
-     ├── context.watch&lt;GameProvider&gt;()      ──▶ SQLite (game_scores)
-     ├── context.watch&lt;RoleProvider&gt;()      ──▶ (in-memory)
-     ├── context.watch&lt;ChatbotProvider&gt;()   ──▶ Hive
-     └── context.watch&lt;OnboardingProvider&gt;() ──▶ Hive</div>
+<!-- Q7 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">7</span>Explain Network Visualization techniques.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p>Network Visualization is the graphical representation of social network data to reveal patterns, clusters, and key actors.</p>
+        <h4>Common Layout Algorithms:</h4>
+        <ul>
+            <li><span class="hl">Force-Directed Layout (Fruchterman-Reingold):</span> Nodes repel each other like charged particles, but edges act like springs pulling connected nodes together. Results in an intuitive, organic-looking graph.</li>
+            <li><span class="hl">Circular Layout:</span> All nodes arranged in a circle; edges drawn as chords. Good for showing connection density patterns.</li>
+            <li><span class="hl">Hierarchical Layout:</span> Tree-like structure showing parent-child relationships. Used for organizational charts or influence cascades.</li>
+        </ul>
+        <h4>Key Visual Features:</h4>
+        <ul>
+            <li><b>Node Size:</b> Proportional to degree centrality (bigger = more connections)</li>
+            <li><b>Node Color:</b> Represents community/cluster membership</li>
+            <li><b>Edge Thickness:</b> Represents interaction frequency or tie strength</li>
+        </ul>
+        <h4>Scale Issues:</h4>
+        <p>Large networks (millions of nodes) cause visual clutter. Solutions: sampling, filtering low-degree nodes, or using aggregation techniques.</p>
+    </div></div>
 </div>
 
-<hr>
-
-<!-- ── 6. Glossary ── -->
-<div class="section" id="s6">
-  <h2 class="section-title"><span class="section-num">6</span> Technical Glossary</h2>
-  <table>
-    <thead><tr><th>Term</th><th>Simple Definition</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Flutter</strong></td><td>Google's UI framework — write once, run on Android, iOS, Web, Desktop</td></tr>
-      <tr><td><strong>Dart</strong></td><td>The programming language Flutter uses (similar to Java/JavaScript)</td></tr>
-      <tr><td><strong>Widget</strong></td><td>Everything visible in Flutter — a button, text, or entire page is a "widget"</td></tr>
-      <tr><td><strong>Provider</strong></td><td>State manager — shares data across the app and auto-updates the UI when data changes</td></tr>
-      <tr><td><strong>ChangeNotifier</strong></td><td>A Dart class that notifies listeners when its data changes → triggers UI rebuild</td></tr>
-      <tr><td><strong>SQLite</strong></td><td>Lightweight file-based database stored on the device — no server required</td></tr>
-      <tr><td><strong>Hive</strong></td><td>Fast key-value storage for Flutter — used for caching typed objects</td></tr>
-      <tr><td><strong>SharedPreferences</strong></td><td>Simple key-value storage for small settings like theme or language preference</td></tr>
-      <tr><td><strong>TFLite</strong></td><td>TensorFlow Lite — runs ML models on mobile devices without internet</td></tr>
-      <tr><td><strong>DeepFace</strong></td><td>Python library for facial analysis (emotion, age, gender) using deep learning</td></tr>
-      <tr><td><strong>face-api.js</strong></td><td>JavaScript library for face detection and expression recognition in browser/WebView</td></tr>
-      <tr><td><strong>FastAPI</strong></td><td>Modern Python web framework for building REST APIs — fast and async</td></tr>
-      <tr><td><strong>WebView</strong></td><td>A component that displays web pages (HTML/JS) inside a native mobile app</td></tr>
-      <tr><td><strong>REST API</strong></td><td>Standard way for app to talk to server over HTTP using GET, POST, etc.</td></tr>
-      <tr><td><strong>Haar Cascade</strong></td><td>Classical algorithm for detecting faces in photos using OpenCV</td></tr>
-      <tr><td><strong>MTCNN</strong></td><td>Deep learning face detector — more accurate than Haar Cascade</td></tr>
-      <tr><td><strong>FER2013</strong></td><td>Facial Expression Recognition dataset — 35,887 images across 7 emotions</td></tr>
-      <tr><td><strong>bcrypt</strong></td><td>Secure password hashing — never stores plain text passwords</td></tr>
-      <tr><td><strong>Hot Reload</strong></td><td>Flutter instantly applies code changes without restarting the app</td></tr>
-      <tr><td><strong>adb reverse</strong></td><td>Creates a tunnel from phone to PC over USB so app reaches <code>localhost</code></td></tr>
-      <tr><td><strong>Localization</strong></td><td>Making an app work in multiple languages (Aakar: English + Hindi)</td></tr>
-      <tr><td><strong>Fetch Polyfill</strong></td><td>Custom JS override that intercepts network request and serves data locally</td></tr>
-    </tbody>
-  </table>
+<!-- Q8 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">8</span>Types of Social Networks + Examples.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <ul>
+            <li><span class="hl">Directed Network:</span> Edges have direction. User A follows User B, but B may not follow A back. Example: <b>Twitter/X</b> follower network.</li>
+            <li><span class="hl">Undirected Network:</span> Edges are mutual/bidirectional. If A is connected to B, then B is also connected to A. Example: <b>Facebook</b> friendships, <b>LinkedIn</b> connections.</li>
+            <li><span class="hl">Weighted Network:</span> Edges carry a numerical value representing strength of connection (e.g., number of messages exchanged). Example: Email communication networks.</li>
+            <li><span class="hl">Bipartite Network:</span> Two distinct types of nodes where edges only connect nodes of different types. Example: Users connected to Products they reviewed on Amazon.</li>
+            <li><span class="hl">Ego Network:</span> A subgraph centered on one specific node (ego) and all its direct connections (alters). Used to study an individual's immediate social sphere.</li>
+        </ul>
+    </div></div>
 </div>
 
-<hr>
-
-<!-- ── 7. Technologies ── -->
-<div class="section" id="s7">
-  <h2 class="section-title"><span class="section-num">7</span> Technologies Used</h2>
-
-  <h3>Flutter Packages (Key)</h3>
-  <table>
-    <thead><tr><th>Package</th><th>Purpose</th></tr></thead>
-    <tbody>
-      <tr><td><code>provider</code></td><td>State management across 8 ChangeNotifiers</td></tr>
-      <tr><td><code>sqflite</code></td><td>SQLite database (8 tables)</td></tr>
-      <tr><td><code>hive_flutter</code></td><td>Fast typed object cache</td></tr>
-      <tr><td><code>shared_preferences</code></td><td>Persist settings (theme, language, API URL)</td></tr>
-      <tr><td><code>tflite_flutter</code></td><td>On-device ML inference</td></tr>
-      <tr><td><code>webview_flutter</code></td><td>Embed HTML/JS for live emotion detection</td></tr>
-      <tr><td><code>camera</code> + <code>image_picker</code></td><td>Camera access and gallery selection</td></tr>
-      <tr><td><code>google_fonts</code></td><td>Inter, Outfit, Poppins typefaces</td></tr>
-      <tr><td><code>fl_chart</code></td><td>Charts and graphs for analytics</td></tr>
-      <tr><td><code>pdf</code> + <code>printing</code></td><td>PDF report generation and sharing</td></tr>
-      <tr><td><code>animate_do</code></td><td>Pre-built fade/slide animations</td></tr>
-      <tr><td><code>bcrypt</code></td><td>Secure password hashing</td></tr>
-      <tr><td><code>http</code></td><td>HTTP client for backend API calls</td></tr>
-      <tr><td><code>flutter_tts</code></td><td>Text-to-Speech for accessibility</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Backend (Python)</h3>
-  <table>
-    <thead><tr><th>Package</th><th>Purpose</th></tr></thead>
-    <tbody>
-      <tr><td><code>fastapi</code></td><td>High-performance async REST API framework</td></tr>
-      <tr><td><code>deepface</code></td><td>Facial emotion analysis using deep learning</td></tr>
-      <tr><td><code>opencv-python</code></td><td>Face detection and image preprocessing</td></tr>
-      <tr><td><code>numpy</code></td><td>Numerical operations on image arrays</td></tr>
-      <tr><td><code>uvicorn</code></td><td>ASGI server to run FastAPI</td></tr>
-    </tbody>
-  </table>
-
-  <h3>AI Models Summary</h3>
-  <table>
-    <thead><tr><th>Model</th><th>Size</th><th>Role</th></tr></thead>
-    <tbody>
-      <tr><td>TinyFaceDetector</td><td>193 KB</td><td>Fast face detection in WebView live mode</td></tr>
-      <tr><td>FaceExpressionNet</td><td>329 KB</td><td>7-emotion classification in WebView</td></tr>
-      <tr><td>DeepFace (FER2013)</td><td>~500 MB</td><td>Server-side high-accuracy emotion detection</td></tr>
-      <tr><td>Haar Cascade (OpenCV)</td><td>Built-in</td><td>Pre-processing face crop before DeepFace</td></tr>
-    </tbody>
-  </table>
-
-  <h3>7 Detected Emotions</h3>
-  <div class="pill-row">
-    <span class="pill pill-orange">😊 Happy</span>
-    <span class="pill pill-blue">😢 Sad</span>
-    <span class="pill pill-red">😠 Angry</span>
-    <span class="pill pill-purple">😲 Surprise</span>
-    <span class="pill" style="background:#F3F4F6;color:#374151;">😐 Neutral</span>
-    <span class="pill pill-green">😨 Fear</span>
-    <span class="pill" style="background:#CCFBF1;color:#0F766E;">🤢 Disgust</span>
-  </div>
+<!-- Q9 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">9</span>Tie Strength &amp; Trust in Social Networks.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <h4>Tie Strength (Granovetter's Theory):</h4>
+        <ul>
+            <li><span class="hl">Strong Ties:</span> Close friends, family, frequent collaborators. High interaction frequency, emotional closeness, mutual trust. They provide emotional support but often share redundant information because they belong to the same circles.</li>
+            <li><span class="hl">Weak Ties:</span> Acquaintances, distant contacts. Low interaction frequency. However, they are <b>extremely valuable</b> because they bridge different communities and bring novel, non-redundant information. This is Granovetter's famous <span class="hl2">"Strength of Weak Ties"</span> theory.</li>
+        </ul>
+        <h4>Trust:</h4>
+        <p>Trust in social networks determines how information flows and is received. Users are more likely to act on recommendations from trusted connections. Trust is influenced by:</p>
+        <ul>
+            <li>Frequency of interaction</li>
+            <li>Reciprocity of engagement</li>
+            <li>Duration of the relationship</li>
+            <li>Shared community membership</li>
+        </ul>
+    </div></div>
 </div>
 
-<hr>
-
-<!-- ── 8. Design Decisions ── -->
-<div class="section" id="s8">
-  <h2 class="section-title"><span class="section-num">8</span> Design Decisions &amp; Best Practices</h2>
-
-  <h3>Architecture Decisions</h3>
-  <table>
-    <thead><tr><th>Decision</th><th>Why</th></tr></thead>
-    <tbody>
-      <tr><td>Hybrid detection (device + cloud)</td><td>On-device TFLite works offline. Cloud DeepFace gives higher accuracy. User toggles via Settings.</td></tr>
-      <tr><td>SQLite over Firebase</td><td>No internet requirement. Children's data stays on-device (privacy). Zero server configuration.</td></tr>
-      <tr><td>Provider over BLoC/GetX</td><td>Flutter team's recommendation. 8 providers are manageable. BLoC would add unnecessary complexity.</td></tr>
-      <tr><td>face-api.js in WebView</td><td>Real-time detection without piping every camera frame from Flutter to Python backend.</td></tr>
-      <tr><td>Base64 model injection</td><td>Eliminates CDN/network dependency. Models loaded from Flutter assets → injected into WebView memory.</td></tr>
-      <tr><td>Role-based separate dashboards</td><td>Each role has fundamentally different needs. Separate shells prevent UI complexity and confusion.</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Security Practices</h3>
-  <table>
-    <thead><tr><th>Practice</th><th>Implementation</th></tr></thead>
-    <tbody>
-      <tr><td>Password security</td><td>bcrypt hashing with random salt — never stored as plaintext</td></tr>
-      <tr><td>Local data storage</td><td>All user and child data stored in on-device SQLite — not sent to cloud</td></tr>
-      <tr><td>Camera permissions</td><td>Requested at runtime via <code>permission_handler</code> with graceful denial handling</td></tr>
-      <tr><td>Production API</td><td>HTTPS + SSL/TLS, restricted CORS, rate limiting for EC2 deployment</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Performance Optimizations</h3>
-  <table>
-    <thead><tr><th>Optimization</th><th>Details</th></tr></thead>
-    <tbody>
-      <tr><td>Image compression</td><td>Resized to 512×512, JPEG-compressed to ≤500 KB before sending to backend</td></tr>
-      <tr><td>Detection throttling</td><td>Live detection runs every 400ms — not per-frame — to prevent CPU overload</td></tr>
-      <tr><td>Neutral penalty</td><td>FER2013 is biased toward "Neutral" — 0.3× multiplier applied to reduce this bias</td></tr>
-      <tr><td>Fear/Surprise correction</td><td>Heuristic correction applied as the model often confuses these two emotions</td></tr>
-      <tr><td>Const constructors</td><td>Used throughout Flutter widgets to minimize unnecessary rebuilds</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Future Scope</h3>
-  <table>
-    <thead><tr><th>Enhancement</th><th>Description</th></tr></thead>
-    <tbody>
-      <tr><td>Cloud Sync</td><td>Firebase / Supabase for cross-device data and multi-school deployment</td></tr>
-      <tr><td>Custom ASD Model</td><td>Fine-tune emotion classifier on ASD-specific facial expression dataset</td></tr>
-      <tr><td>Voice Emotion Analysis</td><td>Analyze vocal tone and pitch to detect emotion from speech</td></tr>
-      <tr><td>Wearable Integration</td><td>Heart rate and skin conductance from smartwatch for physiological emotion tracking</td></tr>
-      <tr><td>More Languages</td><td>Add Marathi, Tamil, Telugu using the existing localization framework</td></tr>
-      <tr><td>OAuth 2.0</td><td>Google / Apple Sign-In for easier user onboarding</td></tr>
-    </tbody>
-  </table>
-
-  <h3>How to Run</h3>
-  <div class="callout blue">
-    <span class="callout-icon">🖥️</span>
-    <div class="callout-text"><strong>Terminal 1 — Backend</strong><br>
-    <code>cd backend</code> → <code>.\venv\Scripts\activate</code> → <code>uvicorn main:app --host 0.0.0.0 --port 8000 --reload</code></div>
-  </div>
-  <div class="callout green">
-    <span class="callout-icon">📱</span>
-    <div class="callout-text"><strong>Terminal 2 — Flutter App (USB)</strong><br>
-    <code>adb reverse tcp:8000 tcp:8000</code> → <code>flutter run</code></div>
-  </div>
-  <div class="callout orange">
-    <span class="callout-icon">📶</span>
-    <div class="callout-text"><strong>WiFi Mode</strong><br>
-    Update <code>lib/app_config.dart → defaultDeepFaceApiUrl</code> with your laptop's WiFi IP (e.g., <code>http://192.168.0.101:8000</code>), then run <code>flutter run</code>.</div>
-  </div>
+<!-- Q10 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">10</span>Network Analytics Tools (Gephi, NodeXL, etc.).</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <table>
+            <tr><th>Tool</th><th>Key Features</th></tr>
+            <tr><td><b>Gephi</b></td><td>Open-source, handles large graphs, real-time visualization, supports community detection (Louvain), force-directed layouts, statistical analysis.</td></tr>
+            <tr><td><b>NodeXL</b></td><td>Microsoft Excel plugin making network analysis accessible. Great for beginners. Directly imports data from Twitter, YouTube, Flickr.</td></tr>
+            <tr><td><b>NetworkX (Python)</b></td><td>Python library for programmatic graph analysis. Compute centrality, shortest paths, clustering. Integrates with Matplotlib for plotting.</td></tr>
+            <tr><td><b>UCINET</b></td><td>Social network analysis software for academic research. Strong in block modeling and role analysis.</td></tr>
+            <tr><td><b>Netlytic</b></td><td>Cloud-based tool for text and network analysis of social media conversations. Auto-discovers communication networks.</td></tr>
+            <tr><td><b>Cytoscape</b></td><td>Originally for bioinformatics; now widely used for complex network visualization with extensive plugins.</td></tr>
+        </table>
+    </div></div>
 </div>
 
-</div><!-- end .content -->
+<!-- ===================== UNIT 3 ===================== -->
+<div class="unit-title"><span class="emoji">✅</span> Unit 3: Text, Action &amp; Hyperlink Analytics</div>
 
-<!-- ════════════════ FOOTER ════════════════ -->
-<div class="doc-footer">
-  <strong>AAKAR — Autism Assistive Kit for Awareness & Recognition</strong><br>
-  Final Year Project &nbsp;•&nbsp; April 2026<br><br>
-  <div class="pill-row" style="justify-content:center; margin-top:10px;">
-    <span class="pill pill-purple">Flutter 3.x</span>
-    <span class="pill pill-green">FastAPI</span>
-    <span class="pill pill-blue">TensorFlow Lite</span>
-    <span class="pill pill-orange">DeepFace</span>
-    <span class="pill pill-red">face-api.js</span>
-  </div>
-  <p style="margin-top:16px; font-size:12px; color:#9CA3AF;">
-    Open in Chrome · Press <strong>Ctrl+P</strong> · Select "Save as PDF" for print version
-  </p>
+<!-- Q11 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">11</span>Explain Social Media Text Analytics with steps.<span class="badge marks">10 M</span><span class="badge hot">HOT</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p><span class="hl">Social Media Text Analytics</span> is the process of extracting meaningful information from unstructured text data generated on social media platforms using NLP techniques.</p>
+        <h4>Steps in Text Analytics:</h4>
+        <ol>
+            <li><span class="hl2">Data Collection:</span> Gather text data from social platforms using APIs (Twitter API returns JSON with tweet text, user info, timestamps) or scraping tools.</li>
+            <li><span class="hl2">Text Preprocessing/Cleaning:</span>
+                <ul>
+                    <li>Lowercasing all text</li>
+                    <li>Removing URLs, @mentions, #hashtags, HTML tags</li>
+                    <li>Removing special characters and numbers</li>
+                    <li>Tokenization — splitting text into individual words/tokens</li>
+                    <li>Stop-word removal — removing common words ("the", "is", "and")</li>
+                    <li>Stemming/Lemmatization — reducing words to root form ("running" → "run")</li>
+                </ul>
+            </li>
+            <li><span class="hl2">Feature Extraction:</span> Convert text into numerical representations using TF-IDF (Term Frequency–Inverse Document Frequency) or Bag of Words (BoW) model.</li>
+            <li><span class="hl2">Analysis/Modeling:</span> Apply NLP algorithms — Sentiment Analysis (VADER, TextBlob), Topic Modeling (LDA), Named Entity Recognition (NER), Trend Detection.</li>
+            <li><span class="hl2">Interpretation &amp; Visualization:</span> Generate word clouds, sentiment distribution charts, topic clusters, and present actionable insights.</li>
+        </ol>
+        <h4>Python Libraries Used:</h4>
+        <p>NLTK, spaCy, TextBlob, scikit-learn, Gensim (for LDA), Transformers (BERT).</p>
+    </div></div>
 </div>
 
-</div><!-- end .page -->
+<!-- Q12 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">12</span>Sentiment Analysis — concept + applications.<span class="badge hot">⭐ HOT</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p><span class="hl">Sentiment Analysis</span> (also called Opinion Mining) is an NLP technique that identifies and classifies the emotional tone/polarity of text as <b>Positive, Negative, or Neutral</b>.</p>
+        <h4>How It Works:</h4>
+        <ul>
+            <li><span class="hl2">Lexicon-Based Approach:</span> Uses a predefined dictionary of words with assigned sentiment scores. VADER (Valence Aware Dictionary and sEntiment Reasoner) is popular for social media — it handles emojis, capitalization ("AMAZING" > "amazing"), and slang.</li>
+            <li><span class="hl2">Machine Learning Approach:</span> Trains classifiers (Naive Bayes, SVM, Random Forest) on labeled datasets. More accurate but requires training data.</li>
+            <li><span class="hl2">Deep Learning Approach:</span> Uses pre-trained transformer models like BERT that understand context deeply. Best at handling sarcasm and nuanced language.</li>
+        </ul>
+        <h4>Business Applications:</h4>
+        <ul>
+            <li><b>Brand Health Monitoring:</b> Tracking overall sentiment about your brand over time.</li>
+            <li><b>Product Launch Analysis:</b> Gauging public reaction to a new product release.</li>
+            <li><b>Crisis Detection:</b> Detecting sudden negative sentiment spikes indicating a PR crisis.</li>
+            <li><b>Customer Service Prioritization:</b> Auto-routing highly negative complaints to priority support.</li>
+            <li><b>Political Analysis:</b> Measuring public opinion on election candidates from Twitter data.</li>
+        </ul>
+    </div></div>
+</div>
+
+<!-- Q13 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">13</span>Social Media Actions &amp; Engagement Metrics (page/post/member level).</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p><span class="hl">Social Media Actions</span> are measurable interactions that users perform on platforms: Like, Share/Retweet, Comment/Reply, Click, Save/Bookmark, Mention, Follow/Subscribe.</p>
+        <h4>Engagement Metrics by Level:</h4>
+        <table>
+            <tr><th>Level</th><th>Metrics</th><th>What It Tells You</th></tr>
+            <tr><td><b>Page Level</b></td><td>Total Followers, Growth Rate, Overall Reach, Page Views, Total Mentions</td><td>Overall brand health and audience size</td></tr>
+            <tr><td><b>Post Level</b></td><td>Likes, Comments, Shares, Clicks, CTR, Impressions, Video Views, Saves</td><td>Which specific content resonates with the audience</td></tr>
+            <tr><td><b>Member Level</b></td><td>User Demographics (age, gender, location), Top Fans, Activity Frequency, Influencer Score</td><td>Who your audience is and who your champions are</td></tr>
+        </table>
+        <h4>Key Formulas:</h4>
+        <ul>
+            <li><b>Engagement Rate</b> = (Total Engagements / Total Reach) × 100</li>
+            <li><b>CTR (Click-Through Rate)</b> = (Clicks / Impressions) × 100</li>
+        </ul>
+    </div></div>
+</div>
+
+<!-- Q14 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">14</span>Hyperlink Analytics — types + importance.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p><span class="hl">Hyperlink Analytics</span> analyzes the linking patterns between web pages, social media profiles, and online content to measure influence, authority, and information flow.</p>
+        <h4>Types of Hyperlinks:</h4>
+        <ul>
+            <li><span class="hl2">In-links (Backlinks):</span> Links pointing TO your page from external sources. More high-quality in-links = higher domain authority.</li>
+            <li><span class="hl2">Out-links:</span> Links from your page pointing to external websites.</li>
+            <li><span class="hl2">Self-links (Internal Links):</span> Links within the same website/domain connecting different pages.</li>
+        </ul>
+        <h4>Importance:</h4>
+        <ul>
+            <li><b>SEO Ranking:</b> Google's PageRank algorithm ranks pages based on the quality and quantity of in-links.</li>
+            <li><b>Influence Mapping:</b> Identifying which social media content or influencers drive the most traffic via link sharing.</li>
+            <li><b>Information Flow Analysis:</b> Understanding how content spreads across the web and social networks through shared links.</li>
+        </ul>
+        <h4>Tools:</h4>
+        <p>Ahrefs, Moz Link Explorer, Google Search Console, VOSON (for academic hyperlink analysis).</p>
+    </div></div>
+</div>
+
+<!-- Q15 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">15</span>Types of Social Media Text (structured/unstructured).</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <ul>
+            <li><span class="hl">Microblog Text:</span> Short, character-limited posts (Twitter/X: 280 chars). Contains heavy slang, abbreviations, hashtags, emojis. Requires specialized NLP handling.</li>
+            <li><span class="hl">Long-Form Text:</span> Blog posts (Medium, WordPress), forum discussions (Reddit threads), detailed product reviews (Amazon). Richer vocabulary, better grammar, more context for analysis.</li>
+            <li><span class="hl">Conversational Text:</span> Comments, replies, chat messages. Often informal, context-dependent, and threaded.</li>
+            <li><span class="hl">User-Generated Content (UGC):</span> Reviews, testimonials, wiki contributions. Provides authentic consumer voice data.</li>
+        </ul>
+        <h4>From a Data Structure perspective:</h4>
+        <ul>
+            <li><b>Structured:</b> Metadata like timestamps, user IDs, follower counts — stored in tables.</li>
+            <li><b>Semi-structured:</b> JSON/XML from APIs — has some schema but flexible fields.</li>
+            <li><b>Unstructured:</b> The actual text content, images, videos — no predefined format.</li>
+        </ul>
+    </div></div>
+</div>
+
+<!-- ===================== UNIT 4 ===================== -->
+<div class="unit-title"><span class="emoji">✅</span> Unit 4: Location &amp; Search Engine Analytics</div>
+
+<!-- Q16 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">16</span>Explain Location Analytics + sources of location data.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p><span class="hl">Location Analytics</span> involves analyzing geographic/geospatial data attached to social media posts to extract location-based business insights.</p>
+        <h4>Sources of Location Data:</h4>
+        <ul>
+            <li><span class="hl2">GPS Coordinates:</span> Directly from mobile devices when users enable location services (latitude/longitude embedded in posts).</li>
+            <li><span class="hl2">Geotags:</span> User-added location tags on posts (e.g., "📍 Mumbai, India" on Instagram).</li>
+            <li><span class="hl2">Check-ins:</span> Explicit location sharing (Facebook Check-in, Foursquare/Swarm).</li>
+            <li><span class="hl2">IP Address Geolocation:</span> Approximate user location derived from their internet connection IP.</li>
+            <li><span class="hl2">Text Mentions:</span> NLP-based extraction of place names from post text ("Just landed in Delhi!").</li>
+            <li><span class="hl2">Photo EXIF Data:</span> GPS coordinates embedded in photo metadata.</li>
+        </ul>
+        <h4>Business Applications:</h4>
+        <p>Targeted local advertising, store location planning, event monitoring, tourism trend analysis, disaster response tracking.</p>
+    </div></div>
+</div>
+
+<!-- Q17 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">17</span>Privacy concerns in Location Analytics.<span class="badge hot">⭐ HOT</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <ul>
+            <li><span class="hl">User Unawareness:</span> Many users don't realize their posts contain embedded GPS data or that location can be inferred from metadata.</li>
+            <li><span class="hl">Stalking &amp; Physical Safety:</span> Real-time or historical location data can be exploited for stalking, burglary, or harassment.</li>
+            <li><span class="hl">Data Aggregation Risks:</span> Even anonymized location data can be de-anonymized by combining multiple data points to identify movement patterns unique to an individual.</li>
+            <li><span class="hl">GDPR Compliance:</span> Under GDPR (General Data Protection Regulation), location data is classified as personal data. Collecting it without explicit user consent is illegal in the EU.</li>
+            <li><span class="hl">Third-Party Data Sharing:</span> Platforms may share or sell location data to advertisers or data brokers without clear user knowledge.</li>
+            <li><span class="hl">Government Surveillance:</span> Governments may access location data for mass surveillance purposes, raising civil liberties concerns.</li>
+        </ul>
+        <h4>Mitigation:</h4>
+        <p>Data anonymization, opt-in consent mechanisms, data minimization (collect only what's needed), transparent privacy policies, and encryption of location records.</p>
+    </div></div>
+</div>
+
+<!-- Q18 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">18</span>Types of Search Engines + Search Engine Analytics.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <h4>Types of Search Engines:</h4>
+        <ul>
+            <li><span class="hl2">Crawler-Based:</span> Use automated bots/spiders to crawl, index, and rank web pages. Example: Google, Bing.</li>
+            <li><span class="hl2">Human-Powered Directories:</span> Web pages manually reviewed and categorized by editors. Example: Yahoo Directory (historical).</li>
+            <li><span class="hl2">Hybrid:</span> Combine crawling with human curation. Example: Yahoo Search.</li>
+            <li><span class="hl2">Meta Search Engines:</span> Aggregate results from multiple search engines simultaneously. Example: DuckDuckGo, Dogpile.</li>
+            <li><span class="hl2">Specialized/Vertical:</span> Focus on specific content types. Example: YouTube (video), Google Scholar (academic), Amazon (products).</li>
+        </ul>
+        <h4>Search Engine Analytics:</h4>
+        <p>The analysis of search data (queries, clicks, impressions, rankings) to understand user intent and optimize content visibility. Tracks which keywords drive traffic, what users search for, and how content ranks over time.</p>
+    </div></div>
+</div>
+
+<!-- Q19 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">19</span>Search Engine Analytics Tools (Google Analytics, etc.).</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <table>
+            <tr><th>Tool</th><th>Purpose &amp; Key Features</th></tr>
+            <tr><td><b>Google Analytics</b></td><td>Tracks website traffic, user behavior, session duration, bounce rate, conversion funnels. Shows which social platforms drive the most referral traffic.</td></tr>
+            <tr><td><b>Google Search Console</b></td><td>Monitors website's search performance — impressions, clicks, CTR, average position for keywords. Identifies indexing issues.</td></tr>
+            <tr><td><b>SEMrush</b></td><td>Keyword research, competitor SEO analysis, backlink auditing, and content gap analysis.</td></tr>
+            <tr><td><b>Moz</b></td><td>Domain Authority scoring, keyword tracking, link analysis, and on-page SEO suggestions.</td></tr>
+            <tr><td><b>Ahrefs</b></td><td>Comprehensive backlink analysis, keyword explorer, content explorer, and rank tracking.</td></tr>
+        </table>
+        <h4>Key Metrics in Google Analytics:</h4>
+        <p><b>Sessions</b> (total visits), <b>Users</b> (unique visitors), <b>Bounce Rate</b> (% leaving after 1 page), <b>Avg Session Duration</b>, <b>Pages/Session</b>, <b>Conversion Rate</b>.</p>
+    </div></div>
+</div>
+
+<!-- ===================== UNIT 5 ===================== -->
+<div class="unit-title"><span class="emoji">✅</span> Unit 5: Information Filtering &amp; KPIs</div>
+
+<!-- Q20 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">20</span>Recommendation Systems — types + working.<span class="badge marks">10 M</span><span class="badge hot">⭐ HOT</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p><span class="hl">Recommendation Systems</span> are automated information filtering engines that predict and suggest items a user might be interested in, based on data patterns.</p>
+        <h4>Types:</h4>
+        <ul>
+            <li><span class="hl2">Content-Based Filtering:</span> Recommends items similar in attributes to what the user previously liked. Analyzes item features (genre, tags, keywords). Example: "You watched an action movie → here's another action movie." <b>Limitation:</b> Can't suggest novel items outside user's existing taste.</li>
+            <li><span class="hl2">Collaborative Filtering:</span> Based on collective behavior of similar users.
+                <ul>
+                    <li><b>User-Based:</b> "Users similar to you also liked X."</li>
+                    <li><b>Item-Based:</b> "Users who liked item A also liked item B."</li>
+                </ul>
+                <b>Limitation:</b> Cold Start Problem — fails for new users with no history.
+            </li>
+            <li><span class="hl2">Hybrid Systems:</span> Combine both content-based and collaborative approaches to overcome individual limitations. Netflix and Amazon use hybrid systems. Solves the Cold Start problem by using content features for new users until enough interaction data accumulates.</li>
+        </ul>
+        <h4>Real-World Examples:</h4>
+        <p>Netflix (movie recommendations), Amazon (product suggestions), Spotify (Discover Weekly), YouTube (video suggestions), LinkedIn (job recommendations).</p>
+    </div></div>
+</div>
+
+<!-- Q21 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">21</span>Social Media KPI &amp; metrics explanation.<span class="badge hot">⭐ HOT</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p><span class="hl">KPI (Key Performance Indicator)</span> is a quantifiable metric that measures the success of a specific business objective on social media.</p>
+        <h4>Important Social Media KPIs:</h4>
+        <table>
+            <tr><th>Business Goal</th><th>KPI</th><th>Definition</th></tr>
+            <tr><td>Brand Awareness</td><td>Reach &amp; Impressions</td><td>Total unique users who saw your content / total times content was displayed</td></tr>
+            <tr><td>Engagement</td><td>Engagement Rate</td><td>(Likes+Comments+Shares) / Reach × 100</td></tr>
+            <tr><td>Traffic</td><td>CTR (Click-Through Rate)</td><td>Clicks / Impressions × 100</td></tr>
+            <tr><td>Conversions</td><td>Conversion Rate</td><td>Desired actions (purchases/signups) / Total visitors × 100</td></tr>
+            <tr><td>Growth</td><td>Follower Growth Rate</td><td>(New followers / Total followers) × 100 over a period</td></tr>
+            <tr><td>Customer Loyalty</td><td>NPS (Net Promoter Score)</td><td>% Promoters − % Detractors</td></tr>
+            <tr><td>Virality</td><td>Share Rate / Amplification</td><td>Shares per post / Total followers × 100</td></tr>
+        </table>
+    </div></div>
+</div>
+
+<!-- Q22 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">22</span>Traditional vs Social Recommendation Systems.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <table>
+            <tr><th>Aspect</th><th>Traditional Recommendation</th><th>Social Recommendation</th></tr>
+            <tr><td><b>Data Source</b></td><td>Purchase history, ratings, browsing behavior</td><td>Social connections, likes, shares, friend activity, social trust</td></tr>
+            <tr><td><b>Basis</b></td><td>Item attributes or user-item similarity matrix</td><td>Social network relationships and influence propagation</td></tr>
+            <tr><td><b>Trust Factor</b></td><td>Algorithm-generated similarity scores</td><td>Trust derived from real social connections (friends, family)</td></tr>
+            <tr><td><b>Cold Start</b></td><td>Major problem for new users</td><td>Mitigated — can use friend preferences even for new users</td></tr>
+            <tr><td><b>Example</b></td><td>Amazon product recommendations</td><td>"Your friends liked this restaurant" on Facebook</td></tr>
+        </table>
+        <p>Social recommendation systems leverage the fact that people are more likely to trust suggestions from their social circle than from anonymous algorithms.</p>
+    </div></div>
+</div>
+
+<!-- Q23 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">23</span>Social Media Strategy formulation.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <h4>Steps to Formulate a Social Media Strategy:</h4>
+        <ol>
+            <li><span class="hl">Set Clear Objectives:</span> Define SMART goals (Specific, Measurable, Achievable, Relevant, Time-bound). Example: "Increase Instagram engagement by 25% in 3 months."</li>
+            <li><span class="hl">Identify Target Audience:</span> Define demographics (age, gender, location), psychographics (interests, values), and which platforms they use (GenZ → TikTok/Insta, B2B → LinkedIn).</li>
+            <li><span class="hl">Conduct Competitive Analysis:</span> Analyze competitor content, posting frequency, engagement rates, and audience sentiment.</li>
+            <li><span class="hl">Choose Platforms &amp; Content Mix:</span> Select platforms aligned with audience. Plan content types (videos, carousels, stories, blogs) and voice/tone.</li>
+            <li><span class="hl">Create Content Calendar:</span> Schedule posts with optimal timing based on audience activity data.</li>
+            <li><span class="hl">Define KPIs:</span> Set measurable metrics (engagement rate, CTR, conversion rate) to track success.</li>
+            <li><span class="hl">Execute, Monitor &amp; Optimize:</span> Deploy content, track performance using analytics tools, and continuously refine strategy based on data.</li>
+        </ol>
+    </div></div>
+</div>
+
+<!-- Q24 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">24</span>Social Media Risks in business.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <ul>
+            <li><span class="hl">Reputation Damage:</span> A single viral negative post or employee blunder can destroy years of brand building overnight.</li>
+            <li><span class="hl">Data Breaches:</span> Hacked social accounts expose customer data, business secrets, and damage trust (e.g., Cambridge Analytica scandal).</li>
+            <li><span class="hl">Misinformation &amp; Fake News:</span> False information about a brand can spread rapidly and is difficult to contain.</li>
+            <li><span class="hl">Legal &amp; Compliance Risks:</span> Violating advertising standards, copyright infringement, GDPR violations when handling user data.</li>
+            <li><span class="hl">Negative Viral Content:</span> Customer complaints or boycott campaigns going viral, leading to financial loss.</li>
+            <li><span class="hl">Employee Social Media Misuse:</span> Employees posting inappropriate content that reflects poorly on the company.</li>
+            <li><span class="hl">Over-Reliance on Algorithms:</span> Platform algorithm changes can drastically reduce organic reach overnight.</li>
+        </ul>
+        <h4>Mitigation:</h4>
+        <p>Social media policy for employees, crisis communication plan, real-time sentiment monitoring, legal review of campaigns, and regular security audits.</p>
+    </div></div>
+</div>
+
+<!-- ===================== UNIT 6 ===================== -->
+<div class="unit-title"><span class="emoji">✅</span> Unit 6: Applications &amp; Privacy</div>
+
+<!-- Q25 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">25</span>Applications of Social Media Analytics in business.<span class="badge marks">10 M</span><span class="badge hot">⭐ HOT</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <ul>
+            <li><span class="hl">Marketing &amp; Advertising:</span> Targeted ad campaigns based on user demographics, interests, and behavior. A/B testing ad creatives. Measuring campaign ROI in real-time.</li>
+            <li><span class="hl">Customer Service:</span> Monitoring social mentions for complaints. Auto-routing high-severity issues using sentiment analysis. Reducing response time.</li>
+            <li><span class="hl">Product Development:</span> Mining customer reviews and feedback to identify desired features, bugs, and improvement opportunities.</li>
+            <li><span class="hl">Brand Management:</span> Tracking brand sentiment over time, managing reputation, and measuring share of voice against competitors.</li>
+            <li><span class="hl">Market Research:</span> Understanding consumer trends, preferences, and behavior without expensive traditional surveys.</li>
+            <li><span class="hl">HR &amp; Recruitment:</span> Screening candidates via LinkedIn profiles, gauging company employer brand perception.</li>
+            <li><span class="hl">Financial Prediction:</span> Hedge funds analyze Twitter/news sentiment to predict stock market movements.</li>
+            <li><span class="hl">Public Sector:</span> Government agencies monitor public sentiment on policies, track disease outbreaks (e.g., COVID Twitter tracking), and manage disaster response communication.</li>
+        </ul>
+    </div></div>
+</div>
+
+<!-- Q26 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">26</span>Business use of Social Media Analytics — Case Study.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <h4>Case Study: Starbucks — Using SMA for Product Innovation</h4>
+        <p><b>Objective:</b> Starbucks wanted to understand what customers wanted and improve product offerings.</p>
+        <ul>
+            <li><span class="hl">Data Collection:</span> Starbucks launched "My Starbucks Idea" platform and monitored Twitter, Instagram, and Facebook for customer mentions, reviews, and suggestions.</li>
+            <li><span class="hl">Analysis:</span> Applied text analytics and sentiment analysis on thousands of customer posts. Topic modeling revealed recurring themes: "dairy-free options", "mobile ordering", and "rewards program improvements".</li>
+            <li><span class="hl">Action:</span> Based on social data insights, Starbucks introduced oat milk options, enhanced their mobile app ordering system, and revamped the rewards program.</li>
+            <li><span class="hl">Result:</span> Increased customer satisfaction scores, higher app downloads, and measurable revenue growth linked to socially-informed product decisions.</li>
+        </ul>
+        <p><b>Key Takeaway:</b> SMA enabled Starbucks to make data-driven decisions by listening to real customer voices at massive scale instead of relying solely on traditional market research.</p>
+    </div></div>
+</div>
+
+<!-- Q27 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">27</span>Privacy policies, data ownership &amp; issues.<span class="badge hot">⭐ HOT</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <h4>Privacy Policies:</h4>
+        <p>Every social media platform has a privacy policy and Terms of Service (ToS) that governs how user data is collected, stored, shared, and used. Users agree to these when signing up.</p>
+        <h4>Data Ownership:</h4>
+        <ul>
+            <li>Users create and "own" their content, but platforms typically gain a <span class="hl">broad license</span> to use, distribute, and analyze that content.</li>
+            <li>Under <span class="hl">GDPR (EU)</span>: Users have the "Right to be Forgotten" — they can request deletion of all their data.</li>
+            <li>Under <span class="hl">IT Act (India)</span>: Reasonable security practices are mandated; sensitive personal data has special protections.</li>
+        </ul>
+        <h4>Key Privacy Issues:</h4>
+        <ul>
+            <li><b>Cambridge Analytica Scandal:</b> Facebook user data of 87 million people harvested without consent for political advertising — the watershed moment for data privacy awareness.</li>
+            <li><b>Third-Party Data Sharing:</b> Platforms selling user data to advertisers and data brokers.</li>
+            <li><b>Surveillance:</b> Government access to social media data for monitoring citizens.</li>
+            <li><b>Lack of Informed Consent:</b> Users rarely read privacy policies and unknowingly consent to extensive data collection.</li>
+            <li><b>De-anonymization:</b> "Anonymous" data can be re-identified by combining multiple datasets.</li>
+        </ul>
+    </div></div>
+</div>
+
+<!-- Q28 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">28</span>Analyzing users using social media data.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p>User analysis on social media involves building comprehensive user profiles and behavioral models using publicly available and platform-provided data.</p>
+        <h4>Types of User Analysis:</h4>
+        <ul>
+            <li><span class="hl">Demographic Analysis:</span> Age, gender, location, language, device type — helps in audience segmentation for targeted marketing.</li>
+            <li><span class="hl">Behavioral Analysis:</span> Posting frequency, active hours, content preferences, hashtag usage patterns — reveals lifestyle and interests.</li>
+            <li><span class="hl">Sentiment/Psychographic Analysis:</span> Analyzing the emotional tone of user posts to understand attitudes, values, and personality traits.</li>
+            <li><span class="hl">Influence Analysis:</span> Measuring a user's reach and impact using centrality metrics, follower counts, engagement rates, and network position.</li>
+            <li><span class="hl">Community Membership:</span> Identifying which groups/communities a user belongs to using community detection algorithms.</li>
+        </ul>
+        <h4>Applications:</h4>
+        <p>Fraud detection (identifying fake accounts/bots), targeted advertising, political campaign microtargeting, law enforcement investigations, and academic research on human behavior.</p>
+    </div></div>
+</div>
+
+<!-- ===================== PRACTICALS ===================== -->
+<div class="unit-title"><span class="emoji">⚡</span> Practical / Case Study Questions</div>
+
+<!-- Q29 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">29</span>Steps of Social Media Data Collection (scraping, crawling, parsing).<span class="badge hot">⭐ HOT</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <h4>Step-by-Step Process:</h4>
+        <ol>
+            <li><span class="hl2">Identify Data Requirements:</span> Define what data is needed (tweets, comments, reviews, user profiles) and from which platform (Twitter, Facebook, YouTube, Reddit).</li>
+            <li><span class="hl2">Choose Collection Method:</span>
+                <ul>
+                    <li><b>API-Based:</b> Using official platform APIs (Twitter API v2, Facebook Graph API, YouTube Data API). Returns structured JSON data. Most reliable and ethical method.</li>
+                    <li><b>Web Scraping:</b> Using Python libraries (BeautifulSoup for static HTML, Selenium for JavaScript-rendered pages) to extract data directly from web pages. Used when no API is available.</li>
+                    <li><b>Web Crawling:</b> Automated bots that systematically browse and index web pages by following hyperlinks. Tools: Scrapy (Python framework).</li>
+                </ul>
+            </li>
+            <li><span class="hl2">Authentication:</span> For API access — register a developer app, obtain API keys/tokens, configure OAuth 2.0 authentication.</li>
+            <li><span class="hl2">Data Extraction &amp; Parsing:</span> Parse the collected raw data (HTML/XML/JSON). Extract specific fields like tweet text, timestamp, user_id, likes count. Python's `json` library for API responses; `BeautifulSoup` for HTML parsing.</li>
+            <li><span class="hl2">Handle Rate Limits:</span> APIs enforce rate limits (e.g., 300 requests per 15 minutes). Implement pagination and retry logic with delays.</li>
+            <li><span class="hl2">Store Raw Data:</span> Save collected data into MongoDB (for unstructured JSON), CSV files, or data lakes for subsequent processing.</li>
+        </ol>
+        <h4>Tools:</h4>
+        <p>Python (Tweepy for Twitter, PRAW for Reddit), BeautifulSoup, Scrapy, Selenium, Postman (for API testing).</p>
+    </div></div>
+</div>
+
+<!-- Q30 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">30</span>Data Cleaning &amp; Storage using Python/MongoDB.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <h4>Data Cleaning Pipeline (Python):</h4>
+        <ol>
+            <li><span class="hl">Remove Duplicates:</span> Using Pandas <code>df.drop_duplicates()</code> to eliminate repeated posts/tweets.</li>
+            <li><span class="hl">Handle Missing Values:</span> Drop rows with null critical fields or fill with defaults using <code>df.fillna()</code>.</li>
+            <li><span class="hl">Text Cleaning:</span> Using Regular Expressions (Regex) — <code>re.sub()</code> to remove URLs, @mentions, special characters, HTML tags, and extra whitespace.</li>
+            <li><span class="hl">Lowercasing:</span> <code>text.lower()</code> for uniformity.</li>
+            <li><span class="hl">Tokenization:</span> NLTK's <code>word_tokenize()</code> splits text into individual words.</li>
+            <li><span class="hl">Stop Word Removal:</span> NLTK's stopwords corpus filters out low-value words.</li>
+            <li><span class="hl">Lemmatization:</span> NLTK's <code>WordNetLemmatizer()</code> reduces words to dictionary base form ("better" → "good").</li>
+        </ol>
+        <h4>Storage in MongoDB:</h4>
+        <ul>
+            <li>MongoDB stores data as <b>BSON documents</b> (Binary JSON) in collections.</li>
+            <li>Python connects via <code>pymongo</code> library: <code>client = MongoClient('localhost', 27017)</code></li>
+            <li>Each tweet/post becomes a document: <code>db.tweets.insert_one({text: "...", sentiment: "positive", user: "...", timestamp: "..."})</code></li>
+            <li><b>Why MongoDB?</b> Schema-less design handles variable social media data structures perfectly. Easy to scale horizontally.</li>
+        </ul>
+    </div></div>
+</div>
+
+<!-- Q31 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">31</span>EDA &amp; Visualization of Social Media Data.<span class="badge hot">⭐ HOT</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p><span class="hl">Exploratory Data Analysis (EDA)</span> is the first analytical step after cleaning. It helps discover patterns, spot anomalies, and form hypotheses before applying models.</p>
+        <h4>Common EDA Steps:</h4>
+        <ul>
+            <li><span class="hl2">Statistical Summary:</span> <code>df.describe()</code> — gives count, mean, std, min, max for numerical columns (likes, shares, comment counts).</li>
+            <li><span class="hl2">Distribution Analysis:</span> Histograms showing distribution of engagement metrics. "Are most posts getting 0-10 likes or 100+?"</li>
+            <li><span class="hl2">Temporal Analysis:</span> Line/area charts showing posting activity over time. "What day/hour gets the most engagement?"</li>
+            <li><span class="hl2">Text Frequency Analysis:</span> Identifying most common words, hashtags, and mentions.</li>
+            <li><span class="hl2">Correlation Analysis:</span> Heatmaps showing correlations between variables (e.g., does post length correlate with engagement?).</li>
+        </ul>
+        <h4>Visualization Tools &amp; Charts:</h4>
+        <table>
+            <tr><th>Visualization</th><th>Use Case</th><th>Library</th></tr>
+            <tr><td>Word Cloud</td><td>Most frequent words/hashtags</td><td>WordCloud (Python)</td></tr>
+            <tr><td>Bar Chart</td><td>Sentiment distribution, top hashtags</td><td>Matplotlib, Seaborn</td></tr>
+            <tr><td>Line Graph</td><td>Engagement trends over time</td><td>Matplotlib, Plotly</td></tr>
+            <tr><td>Heatmap</td><td>Correlation matrix, activity by day/hour</td><td>Seaborn</td></tr>
+            <tr><td>Pie Chart</td><td>Sentiment ratio breakdown</td><td>Matplotlib</td></tr>
+            <tr><td>Network Graph</td><td>Social connections, communities</td><td>NetworkX, Gephi</td></tr>
+            <tr><td>Box Plot</td><td>Outlier detection in engagement</td><td>Seaborn</td></tr>
+        </table>
+    </div></div>
+</div>
+
+<!-- Q32 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">32</span>Content-based Social Media Analytics model (sentiment, topic).<span class="badge hot">⭐ HOT</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p>Content-based models analyze the <b>actual content</b> (text, images, audio, video) shared on social media rather than the network structure.</p>
+        <h4>Key Techniques:</h4>
+        <ul>
+            <li><span class="hl">Sentiment Analysis:</span> Classify text as Positive/Negative/Neutral using VADER (for social media slang + emojis) or TextBlob. For higher accuracy, fine-tune BERT on labeled social media datasets.</li>
+            <li><span class="hl">Topic Modeling (LDA):</span> Latent Dirichlet Allocation discovers hidden topics in a large corpus. Feed 50,000 tweets → LDA might discover Topic 1: {"battery", "drain", "charge"}, Topic 2: {"camera", "photo", "quality"}.</li>
+            <li><span class="hl">Trend/Issue Detection:</span> Monitor sudden spikes in keyword/hashtag frequency to identify emerging trends or issues before they go viral.</li>
+            <li><span class="hl">Emoji/Emoticon Analysis:</span> Map emojis to sentiment values (😀 = positive, 😡 = negative). Emojis often carry more genuine sentiment than text.</li>
+            <li><span class="hl">Image Analytics:</span> Using CNNs (Convolutional Neural Networks) or pre-trained models (ResNet, YOLO) to detect objects, logos, faces, or inappropriate content in shared images.</li>
+            <li><span class="hl">Video/Audio Analytics:</span> Speech-to-text conversion followed by text analysis. Video frame analysis for brand logo detection or scene understanding.</li>
+        </ul>
+        <h4>Business Use:</h4>
+        <p>A restaurant chain can run sentiment analysis on Zomato/Google reviews, use topic modeling to discover top complaints (food quality vs service speed vs hygiene), and take targeted corrective action.</p>
+    </div></div>
+</div>
+
+<!-- Q33 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">33</span>Structure-based model (community detection, influence analysis).</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p>Structure-based models analyze the <b>network topology</b> — the pattern of connections and relationships between users — rather than the content they share.</p>
+        <h4>Community Detection:</h4>
+        <p>Algorithms that partition the network graph into densely connected subgroups (communities) where members interact more with each other than with outsiders.</p>
+        <ul>
+            <li><span class="hl">Louvain Algorithm:</span> Optimizes modularity score iteratively. Fast and scalable for large networks. Groups nodes into communities where intra-community edges are dense.</li>
+            <li><span class="hl">Girvan-Newman Algorithm:</span> Removes edges with highest betweenness centrality iteratively, naturally splitting the network into communities.</li>
+            <li><span class="hl">Modularity (Q):</span> A score (0 to 1) measuring the quality of community division. Higher Q = better-defined communities.</li>
+        </ul>
+        <h4>Influence Analysis:</h4>
+        <p>Identifying the most influential nodes/users in the network using centrality measures:</p>
+        <ul>
+            <li><b>Degree Centrality:</b> Number of direct connections. High = popular.</li>
+            <li><b>Betweenness Centrality:</b> Users who bridge different communities. They control information flow.</li>
+            <li><b>Closeness Centrality:</b> Users who can reach everyone else quickly. Best for spreading viral content.</li>
+            <li><b>PageRank:</b> Google's algorithm applied to social networks. Nodes linked by other important nodes get higher scores.</li>
+        </ul>
+        <h4>Tools:</h4>
+        <p>NetworkX (Python), Gephi, igraph (R).</p>
+    </div></div>
+</div>
+
+<!-- Q34 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">34</span>Dashboard development using real-time social media data.</div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p>A <span class="hl">real-time social media dashboard</span> provides live, continuously updating visualizations of social media metrics to enable instant decision-making.</p>
+        <h4>Architecture:</h4>
+        <ol>
+            <li><span class="hl2">Data Ingestion:</span> Connect to platform streaming APIs (Twitter Filtered Stream, YouTube Live Chat). Data arrives as continuous JSON stream.</li>
+            <li><span class="hl2">Message Broker:</span> Use Apache Kafka or RabbitMQ to buffer and manage the high-velocity stream reliably.</li>
+            <li><span class="hl2">Processing:</span> Real-time processing using Apache Spark Streaming or simple Python consumers. Apply sentiment scoring, keyword extraction on each incoming record.</li>
+            <li><span class="hl2">Storage:</span> Store processed data in time-series databases (InfluxDB) or MongoDB for historical queries.</li>
+            <li><span class="hl2">Visualization Layer:</span> Build interactive dashboards using Dash (Plotly), Streamlit, Grafana, or Power BI. Auto-refresh charts every few seconds.</li>
+        </ol>
+        <h4>Dashboard Components:</h4>
+        <ul>
+            <li>Live tweet/post feed with sentiment color coding</li>
+            <li>Real-time sentiment gauge (positive vs negative ratio)</li>
+            <li>Trending hashtags/keywords leaderboard</li>
+            <li>Geographic heatmap of post locations</li>
+            <li>Engagement metrics KPI cards (likes, shares, comments per minute)</li>
+            <li>Historical trend line for comparison</li>
+        </ul>
+    </div></div>
+</div>
+
+<!-- Q35 -->
+<div class="qa">
+    <div class="q-head">
+        <div><span class="num">35</span>Competitor analysis using social media data.<span class="badge hot">⭐ HOT</span></div>
+        <i class="icon">+</i>
+    </div>
+    <div class="a-body"><div class="inner">
+        <p><span class="hl">Competitor Analysis</span> on social media involves systematically monitoring and analyzing competitor performance, strategies, and audience perception to identify opportunities and threats.</p>
+        <h4>Steps:</h4>
+        <ol>
+            <li><span class="hl2">Identify Competitors:</span> Direct competitors (same product/market) and indirect competitors (substitute products). Set up monitoring for their social profiles.</li>
+            <li><span class="hl2">Track Key Metrics:</span>
+                <ul>
+                    <li><b>Share of Voice (SOV):</b> What % of total industry conversations mention each competitor? Formula: (Brand mentions / Total industry mentions) × 100</li>
+                    <li><b>Engagement Rate:</b> Compare likes, comments, shares per post across competitors.</li>
+                    <li><b>Follower Growth Rate:</b> Who is growing faster and why?</li>
+                    <li><b>Post Frequency &amp; Timing:</b> When and how often do competitors post?</li>
+                </ul>
+            </li>
+            <li><span class="hl2">Content Strategy Analysis:</span> What type of content gets the most engagement for competitors? (Videos vs images vs text, tone of voice, hashtag strategy)</li>
+            <li><span class="hl2">Sentiment Analysis on Competitor Mentions:</span> Run NLP on comments/reviews about competitors to discover what customers love/hate about them. Customer pain points = YOUR opportunity.</li>
+            <li><span class="hl2">SWOT Analysis:</span> Compile findings into Strengths, Weaknesses, Opportunities, Threats.</li>
+        </ol>
+        <h4>Tools:</h4>
+        <p>Sprout Social, Hootsuite, SEMrush Social, BrandWatch, SimilarWeb, Social Blade (YouTube), and custom Python scripts using APIs.</p>
+    </div></div>
+</div>
+
+</div>
+
+<script>
+    document.querySelectorAll('.qa').forEach(qa => {
+        const head = qa.querySelector('.q-head');
+        head.addEventListener('click', () => {
+            qa.classList.toggle('open');
+            const body = qa.querySelector('.a-body');
+            if (qa.classList.contains('open')) {
+                body.style.maxHeight = body.scrollHeight + 'px';
+            } else {
+                body.style.maxHeight = null;
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
